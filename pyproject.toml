@@ -3,6 +3,8 @@ name = "miniagents"
 version = "0.2.0"
 description = "A minimal multi-agent LLM framework: ReAct agents with tools, composed into a task dependency DAG."
 readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
 requires-python = ">=3.11"
 dependencies = [
     "groq>=0.24.0",

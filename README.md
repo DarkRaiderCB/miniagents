@@ -138,3 +138,33 @@ Each example prints its trace summary and writes `traces/<run_id>.jsonl`.
 - Tool functions should have type annotations and a docstring — both are shown
   to the model and used for argument validation.
 - Task names must be unique within a crew (auto-generated if omitted).
+
+## Attribution
+
+miniagents is a derivative work: a rewritten and hardened reimplementation of
+the MIT-licensed
+[agentic-patterns-course](https://github.com/neural-maze/agentic-patterns-course)
+by [The Neural Maze](https://github.com/neural-maze) (© 2024 The Neural Maze).
+
+The core mechanics are adapted from that course's patterns and retain its
+design and much of its structure:
+
+- the ReAct loop, system prompt, and tag protocol (`react_agent.py` ← `planning_pattern`)
+- the `@tool` decorator, signature introspection, and argument validation (`tool.py` ← `tool_pattern`)
+- the Groq chat-completions wrapper (`chat_client.py` ← `utils/completions.py`)
+- tag extraction and chat-history helpers (`utils.py` ← `utils/extraction.py`, `utils/completions.py`)
+- the `Crew` context-manager registration, topological execution, and `>>`/`<<`
+  dependency-graph API (`crew.py`, `agent.py`, `task.py` ← `multiagent_pattern`)
+
+Original contributions in this project (© 2026 Sanyog Mishra) are the additions
+on top of that base: the Agent/Task split (the upstream fuses them), the
+execution-tracing system (`tracing.py`), the exception hierarchy
+(`exceptions.py`), production hardening (retries/timeouts, circular-dependency
+and duplicate-name detection, argument coercion, input validation, trace
+export), and the test suite and packaging.
+
+## License
+
+Released under the [MIT License](LICENSE), retaining the upstream copyright
+notice as required. You may use, copy, modify, and distribute this software
+(including commercially), provided the copyright and license notices are kept.
